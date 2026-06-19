@@ -1,0 +1,63 @@
+<!-- <app-navbar></app-navbar> -->
+
+<div align="center">
+    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Courier</h1>
+    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Courier</h1>
+
+    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
+        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
+        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    </div>
+
+    <table>
+        <tr>
+            <th align="left">Sender Name<span style="color: red">*</span></th>
+            <td><input type="text" name="senderName" [(ngModel)]="form.data.senderName" placeholder="Enter Courier Name"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.senderName}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Reciever Address<span style="color: red">*</span></th>
+            <td><input type="text" name="recieverAddress" [(ngModel)]="form.data.recieverAddress" placeholder="Enter Reciever Address"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.recieverAddress}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Tracking Number<span style="color: red">*</span></th>
+            <td><input type="text" name="trackingNumber" [(ngModel)]="form.data.trackingNumber" placeholder="Enter Tracking Number"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.trackingNumber}}</td>
+        </tr>
+
+        <tr>
+            <th align="left">Delivery Status<span style="color: red">*</span></th>
+            <td><input type="text" name="deliveryStatus" [(ngModel)]="form.data.deliveryStatus" placeholder="Enter Delivery Status"></td>
+            <td style="position: fixed; color: red;">{{form.inputerror.deliveryStatus}}</td>
+        </tr>
+
+        <tr></tr>
+
+        <!-- <tr>
+            <th></th>
+            <td align="left" colspan="2">
+                <button (click)="submit()">save</button> &nbsp;
+                <button (click)="forward('/collegelist')">list</button>
+            </td>
+        </tr> -->
+
+        <tr>
+            <th></th>
+            <td *ngIf="!form.data.id" align="left" colspan="2">
+                <button (click)="submit()">Save</button> &nbsp;
+                <button (click)="reset()">Reset</button>
+            </td>
+            <td *ngIf="form.data.id" align="left" colspan="2">
+                <button (click)="submit()">Save</button> &nbsp;
+                <button (click)="forward('/courierList')">Cancel</button>
+            </td>
+        
+        </tr>
+
+    </table>
+</div>
+
+<!-- <app-footer></app-footer> -->
